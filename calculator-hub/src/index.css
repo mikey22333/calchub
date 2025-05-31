@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
