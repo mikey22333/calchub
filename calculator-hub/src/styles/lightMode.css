@@ -1,0 +1,52 @@
+/* Override dark mode styles to ensure all results are light and readable */
+
+/* General dark mode overrides */
+.dark\:bg-gray-700,
+.dark\:bg-gray-800,
+.dark\:bg-gray-900 {
+  background-color: #f9fafb !important; /* Light gray background */
+}
+
+.dark\:text-gray-300,
+.dark\:text-gray-400,
+.dark\:text-white,
+.dark\:text-gray-200 {
+  color: #374151 !important; /* Dark gray text for readability */
+}
+
+.dark\:text-primary-400 {
+  color: #0284c7 !important; /* Primary color for light mode */
+}
+
+.dark\:divide-gray-700 {
+  border-color: #e5e7eb !important; /* Light border color */
+}
+
+/* Result containers */
+.result-container {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+thead.dark\:bg-gray-700 {
+  background-color: #f3f4f6 !important;
+}
+
+tbody.dark\:bg-gray-800 {
+  background-color: #ffffff !important;
+}
+
+/* History items */
+.history-item {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+/* Random number result */
+.random-number-result {
+  background-color: #f0f9ff !important;
+  color: #0369a1 !important;
+}
