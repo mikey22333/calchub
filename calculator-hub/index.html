@@ -16,13 +16,16 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0ea5e9" />
     <title>CalcHub - Free Online Calculators</title>
+    <!-- Preload CSS to ensure it loads before page rendering -->
+    <link rel="preload" href="/assets/index-*.css" as="style" />
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
 
-    <!-- No external CSS links needed as Tailwind will be processed through the build system -->
-    <!-- Critical styles only for initial render -->
+    <!-- Ensure CSS is loaded properly -->
+    <link rel="stylesheet" href="/assets/index-*.css" id="main-css" />
     <style>
 /* Critical CSS for initial render */
 body {
@@ -31,6 +34,16 @@ body {
   padding: 0;
   background-color: #f9fafb;
   color: #1f2937;
+}
+
+/* Hide content briefly until CSS is confirmed loaded */
+.content-wrapper {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.content-wrapper.loaded {
+  opacity: 1;
 }
 
 .container {
@@ -489,8 +502,45 @@ a:hover {
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="content-wrapper"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Script to ensure CSS is loaded properly
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if CSS is loaded
+        const checkCSSLoaded = () => {
+          // Get computed styles of body
+          const bodyStyles = window.getComputedStyle(document.body);
+          const bgColor = bodyStyles.backgroundColor;
+          
+          // If background color is not the expected value, CSS might not be loaded
+          if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)') {
+            console.log('CSS not loaded properly, attempting to reload...');
+            reloadCSS();
+            return false;
+          }
+          
+          // Show content once CSS is confirmed loaded
+          document.getElementById('root').classList.add('loaded');
+          return true;
+        };
+        
+        // Function to reload CSS
+        const reloadCSS = () => {
+          const links = document.querySelectorAll('link[rel="stylesheet"]');
+          links.forEach(link => {
+            const href = link.href;
+            link.href = href.includes('?') ? href : href + '?reload=' + new Date().getTime();
+          });
+          
+          // Check again after a short delay
+          setTimeout(checkCSSLoaded, 500);
+        };
+        
+        // Initial check
+        setTimeout(checkCSSLoaded, 100);
+      });
+    </script>
     <!-- Google AdSense Script Placeholder -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
   </body>
