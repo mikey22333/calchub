@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unicalcuhub.netlify.app/sitemap.xml
