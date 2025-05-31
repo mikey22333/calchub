@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "netlify-build": "CI=false vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tailwindcss -i ./src/index.css -o ./src/tailwind.css && vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "netlify-build": "CI=false tailwindcss -i ./src/index.css -o ./src/tailwind.css && vite build"
   },
   "dependencies": {
     "react": "^19.1.0",

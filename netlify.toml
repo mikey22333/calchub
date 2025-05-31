@@ -1,6 +1,6 @@
 [build]
   base = "calculator-hub"
-  command = "npm install -g node-polyfill-webpack-plugin && npm run build"
+  command = "npm install -D tailwindcss postcss autoprefixer && npx tailwindcss init -p && npm run build"
   publish = "dist"
 
 [build.environment]
