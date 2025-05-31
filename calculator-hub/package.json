@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tailwindcss -i ./src/index.css -o ./src/tailwind.css && vite build",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "netlify-build": "CI=false tailwindcss -i ./src/index.css -o ./src/tailwind.css && vite build"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -18,7 +17,10 @@
     "crypto-browserify": "^3.12.0",
     "buffer": "^6.0.3",
     "process": "^0.11.10",
-    "stream-browserify": "^3.0.0"
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
