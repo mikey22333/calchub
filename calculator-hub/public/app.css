@@ -1,31 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/calculator-icon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Free online calculators for finance, math, health, education, and more. Fast, accurate, and easy to use." />
-    <meta name="keywords" content="calculator, online calculator, finance calculator, math calculator, BMI calculator, loan calculator, free calculator" />
-    <meta name="author" content="CalcHub" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="CalcHub - Free Online Calculators" />
-    <meta property="og:description" content="Free online calculators for finance, math, health, education, and more. Fast, accurate, and easy to use." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://calchub.example.com" />
-    <meta property="og:image" content="/calculator-og-image.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0ea5e9" />
-    <title>CalcHub - Free Online Calculators</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-
-    <!-- Direct link to CSS file in public folder -->
-    <link rel="stylesheet" href="/app.css" />
-    <!-- Fallback inline styles for critical rendering path -->
-    <style>
-/* Critical CSS for initial render */
+/* Base styles for Calculator Hub */
 body {
   font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
   margin: 0;
@@ -487,12 +460,3 @@ a:hover {
   text-decoration: underline;
   color: #0284c7;
 }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <!-- Google AdSense Script Placeholder -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-  </body>
-</html>
