@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Test Page</title>
+  <style>
+    body {
+      font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      background-color: #0ea5e9;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    
+    .button:hover {
+      background-color: #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>CSS Test Page</h1>
+    </div>
+    <div class="content">
+      <h2>This is a test page to verify CSS is working</h2>
+      <p>If you can see this page with blue headers, white content area with a shadow, and styled buttons, then CSS is working correctly.</p>
+      <p>This page is served directly from the public folder and doesn't go through the React/Vite build process.</p>
+      <a href="/" class="button">Go Back to Main App</a>
+    </div>
+  </div>
+</body>
+</html>
