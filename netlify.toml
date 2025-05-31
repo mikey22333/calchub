@@ -1,12 +1,13 @@
 [build]
   base = "calculator-hub"
-  command = "npm run build"
+  command = "npm install -g node-polyfill-webpack-plugin && npm run build"
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "16.20.2"
-  NPM_VERSION = "8.19.4"
+  NODE_VERSION = "18.17.1"
+  NPM_VERSION = "9.6.7"
   CI = "false"
+  NODE_OPTIONS = "--max_old_space_size=4096"
 
 [[redirects]]
   from = "/*"
