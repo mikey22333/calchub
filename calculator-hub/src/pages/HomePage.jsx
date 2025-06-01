@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import AdBanner from '../components/layout/AdBanner';
 
 const HomePage = () => {
   const categories = [
