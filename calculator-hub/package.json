@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "copyfiles -u 1 public/sitemap.xml public/robots.txt dist/",
+    "prebuild": "copyfiles -u 1 public/sitemap.xml.txt public/robots.txt dist/ && copy public/sitemap.xml.txt public/sitemap.xml",
     "build": "vite build",
     "postbuild": "npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 public/sitemap.xml public/robots.txt dist/",
+    "copy-assets": "copyfiles -u 1 public/sitemap.xml.txt public/robots.txt dist/ && copy dist/sitemap.xml.txt dist/sitemap.xml",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
