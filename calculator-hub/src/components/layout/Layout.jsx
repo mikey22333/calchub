@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import AdBanner from './AdBanner';
 
 const Layout = () => {
   return (
@@ -16,6 +17,10 @@ const Layout = () => {
       
       <main className="flex-grow relative z-10 pt-8 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 p-4 bg-white bg-opacity-90 rounded-2xl shadow-soft">
+            <AdBanner position="top" />
+          </div>
+          
           <div className="relative">
             <Outlet />
           </div>
