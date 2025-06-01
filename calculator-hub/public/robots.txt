@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://unicalhub.netlify.app/sitemap.xml.txt
+Sitemap: https://unicalcuhub.netlify.app/sitemap.xml
