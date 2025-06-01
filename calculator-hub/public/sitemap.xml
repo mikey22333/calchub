@@ -3,7 +3,7 @@
 
   <!-- Home -->
   <url>
-    <loc>https://unicalcuhub.netlify.app/</loc>
+    <loc>https://unicalhub.netlify.app/</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -11,49 +11,49 @@
 
   <!-- Calculator Tools -->
   <url>
-    <loc>https://unicalcuhub.netlify.app/bmi-calculator</loc>
+    <loc>https://unicalhub.netlify.app/bmi-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/loan-calculator</loc>
+    <loc>https://unicalhub.netlify.app/loan-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/age-calculator</loc>
+    <loc>https://unicalhub.netlify.app/age-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/percentage-calculator</loc>
+    <loc>https://unicalhub.netlify.app/percentage-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/unit-converter</loc>
+    <loc>https://unicalhub.netlify.app/unit-converter</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/date-calculator</loc>
+    <loc>https://unicalhub.netlify.app/date-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/fraction-calculator</loc>
+    <loc>https://unicalhub.netlify.app/fraction-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://unicalcuhub.netlify.app/scientific-calculator</loc>
+    <loc>https://unicalhub.netlify.app/scientific-calculator</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
