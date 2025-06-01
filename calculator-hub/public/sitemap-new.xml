@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
+  <url>
+    <loc>https://unicalhub.netlify.app/</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Calculator Tools -->
+  <url>
+    <loc>https://unicalhub.netlify.app/bmi-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/loan-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/age-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/percentage-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/unit-converter</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/date-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/fraction-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://unicalhub.netlify.app/scientific-calculator</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
