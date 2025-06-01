@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import AdBanner from '../../layout/AdBanner';
+import AdBanner from '../../../components/layout/AdBanner';
 
 const BMICalculator = () => {
   const [height, setHeight] = useState('');
