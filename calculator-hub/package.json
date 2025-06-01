@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "copyfiles -u 1 public/sitemap.xml public/robots.txt dist/",
+    "prebuild": "if not exist dist mkdir dist",
     "build": "vite build",
-    "postbuild": "npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 public/sitemap.xml public/robots.txt dist/",
+    "postbuild": "copyfiles -u 1 public/sitemap.xml public/robots.txt dist/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
