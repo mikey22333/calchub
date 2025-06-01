@@ -7,6 +7,7 @@
   NODE_VERSION = "18.17.1"
   NPM_VERSION = "9.6.7"
   NODE_OPTIONS = "--openssl-legacy-provider"
+  CI = false
 
 # Global headers - these should match what's in _headers
 [[headers]]
@@ -24,10 +25,7 @@
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
     Cache-Control = "public, max-age=3600"
-    X-Robots-Tag = "noindex"
-    X-Content-Type-Options = "nosniff"
 
 # Specific headers for index.html
 [[headers]]
@@ -35,42 +33,13 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Redirects - ensure sitemap.xml is served directly without processing
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-  force = true
-  headers = {X-Content-Type-Options = "nosniff", Content-Type = "application/xml"}
-
-# Ensure sitemap.xml is not processed as HTML
-[[headers]]
-  for = "/*.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-    X-Content-Type-Options = "nosniff"
-    Cache-Control = "public, max-age=3600"
-
-# Disable HTML processing for XML files
-[[headers]]
-  for = "/*.xml"
-  [headers.values]
-    X-HTML-Output = "false"
-    X-Content-Type-Options = "nosniff"
-
+# Static assets
 [[headers]]
   for = "/assets/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    X-Content-Type-Options = "nosniff"
 
-# Sitemap and robots.txt headers
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml"
-    Cache-Control = "public, max-age=3600"
-
+# Robots.txt
 [[headers]]
   for = "/robots.txt"
   [headers.values]
