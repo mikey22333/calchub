@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "mkdir -p dist",
+    "prebuild": "if not exist dist mkdir dist",
     "build": "vite build",
-    "postbuild": "cp public/sitemap.xml dist/ && cp public/robots.txt dist/",
+    "postbuild": "copy public\\sitemap.xml dist\\ && copy public\\robots.txt dist\\",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
