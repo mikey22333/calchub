@@ -35,8 +35,49 @@
     <!-- Load non-critical CSS asynchronously -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" media="print" onload="this.media='all'" />
     
-    <!-- Critical CSS -->
-    <link rel="stylesheet" href="/critical.css" />
+    <!-- Critical CSS Inline -->
+    <style id="critical-css">
+      /*! Critical CSS - Inlined for immediate rendering */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body { 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        line-height: 1.6; 
+        color: #333; 
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+      body.loaded { opacity: 1; }
+      #root { min-height: 100vh; display: flex; flex-direction: column; }
+      .content-wrapper { flex: 1; }
+      
+      /* Loading indicator */
+      .app-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8fafc;
+        z-index: 9999;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+      }
+      .app-loading.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .app-loading:after {
+        content: 'Loading...';
+        font-size: 1.2rem;
+        color: #333;
+      }
+    </style>
     <style>
       /* Inline critical styles for immediate rendering */
       .app-loading:before {
@@ -746,98 +787,44 @@ a:hover {
       </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Load main CSS with preload -->
+    <link rel="preload" href="/assets/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/index.css" /></noscript>
+    
+    <!-- Load Google Fonts asynchronously -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    
     <script>
-      // Load non-critical CSS
-      function loadCSS(href) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = href;
-        link.media = 'print';
-        link.onload = function() {
-          this.media = 'all';
-        };
-        document.head.appendChild(link);
-      }
-      
-      // Load Google Fonts asynchronously
-      const WebFontConfig = {
-        google: {
-          families: ['Poppins:300,400,500,600,700', 'Montserrat:400,500,600,700,800', 'Fira+Code:400,500']
-        },
-        active: function() {
-          // Fonts loaded
-          document.documentElement.classList.add('fonts-loaded');
-        }
-      };
-      
-      // Load WebFont loader
-      (function(d) {
-        const wf = d.createElement('script');
-        const s = d.scripts[0];
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-        wf.async = true;
-        s.parentNode.insertBefore(wf, s);
-      })(document);
-      
-      // Load main CSS
-      loadCSS('/assets/index.css');
-      
-      // Mark as loaded when the app is ready
+      // Mark page as loaded when all resources are ready
       document.addEventListener('DOMContentLoaded', function() {
-        const root = document.getElementById('root');
-        if (root) {
-          // Remove loading class after a short delay to ensure smooth transition
-          setTimeout(() => {
-            root.setAttribute('data-loaded', 'true');
-            // Remove loading indicator after content is visible
-            const loadingIndicator = document.querySelector('.app-loading');
-            if (loadingIndicator) {
-              setTimeout(() => {
-                loadingIndicator.style.display = 'none';
-              }, 300);
-            }
-          }, 100);
-        }
-      });
-      // Script to ensure CSS is loaded properly
-      document.addEventListener('DOMContentLoaded', function() {
-        // Mark as loaded when the app is ready
-        const root = document.getElementById('root');
-        if (root) {
-          root.setAttribute('data-loaded', 'true');
-        }
-        // Check if CSS is loaded
-        const checkCSSLoaded = () => {
-          // Get computed styles of body
-          const bodyStyles = window.getComputedStyle(document.body);
-          const bgColor = bodyStyles.backgroundColor;
-          
-          // If background color is not the expected value, CSS might not be loaded
-          if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)') {
-            console.log('CSS not loaded properly, attempting to reload...');
-            reloadCSS();
-            return false;
-          }
-          
-          // Show content once CSS is confirmed loaded
-          document.getElementById('root').classList.add('loaded');
-          return true;
-        };
-        
-        // Function to reload CSS
-        const reloadCSS = () => {
-          const links = document.querySelectorAll('link[rel="stylesheet"]');
-          links.forEach(link => {
-            const href = link.href;
-            link.href = href.includes('?') ? href : href + '?reload=' + new Date().getTime();
+        // Add loaded class to body when fonts are ready
+        if (document.fonts) {
+          document.fonts.ready.then(function() {
+            document.documentElement.classList.add('fonts-loaded');
           });
-          
-          // Check again after a short delay
-          setTimeout(checkCSSLoaded, 500);
-        };
+        }
         
-        // Initial check
-        setTimeout(checkCSSLoaded, 100);
+        // Mark body as loaded
+        document.body.classList.add('loaded');
+        
+        // Hide loading indicator after a short delay
+        setTimeout(function() {
+          const loadingElement = document.querySelector('.app-loading');
+          if (loadingElement) {
+            loadingElement.classList.add('hidden');
+            // Remove from DOM after animation completes
+            setTimeout(function() {
+              loadingElement.remove();
+            }, 300);
+          }
+        }, 100);
+        
+        // Fallback for font loading
+        setTimeout(function() {
+          document.documentElement.classList.add('fonts-loaded');
+        }, 1000);
       });
     </script>
     <!-- Google AdSense Script Placeholder -->
