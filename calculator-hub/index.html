@@ -23,23 +23,253 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4156428456711019" crossorigin="anonymous"></script>
     
     <title>CalcHub - Free Online Calculators</title>
-    <!-- Preload CSS to ensure it loads before page rendering -->
-    <link rel="preload" href="/assets/index-*.css" as="style" />
     
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-
-    <!-- Ensure CSS is loaded properly -->
-    <link rel="stylesheet" href="/assets/index-*.css" id="main-css" />
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/assets/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/assets/index.css" /></noscript>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="/critical.css" />
     <style>
-/* Critical CSS for initial render */
-body {
-  font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9fafb;
+      /* Inline critical styles for immediate rendering */
+      .app-loading:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f8fafc;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1.2rem;
+        color: #333;
+      }
+      .app-loading:after {
+        content: 'Loading...';
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      /* Critical CSS for initial render */
+      body {
+        font-family: 'Poppins', 'Montserrat', system-ui, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9fafb;
+        color: #1f2937;
+      }
+      
+      /* Hide content briefly until CSS is confirmed loaded */
+      .content-wrapper {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+      
+      .content-wrapper.loaded {
+        opacity: 1;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      
+      .header {
+        background-color: #0ea5e9;
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem;
+      }
+      
+      .nav-link:hover {
+        text-decoration: underline;
+      }
+      
+      .main {
+        padding: 2rem 0;
+      }
+      
+      .calculator-container {
+        max-width: 56rem; 
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        border: 1px solid #e5e7eb;
+      }
+      
+      .calculator-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      .calculator-description {
+        color: #4b5563;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 1.125rem;
+      }
+      
+      .input-group {
+        margin-bottom: 1.25rem;
+        position: relative;
+      }
+      
+      .input-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+      
+      .input-field {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: border-color 0.15s ease-in-out;
+      }
+      
+      .input-field:focus {
+        outline: none;
+        border-color: #0ea5e9;
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+      }
+      
+      .button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 0.5rem;
+        transition: all 0.15s ease-in-out;
+        cursor: pointer;
+      }
+      
+      .button-primary {
+        background-color: #0ea5e9;
+        color: white;
+        border: none;
+      }
+      
+      .button-primary:hover {
+        background-color: #0284c7;
+      }
+      
+      .button-secondary {
+        background-color: #f3f4f6;
+        color: #1f2937;
+        border: 1px solid #d1d5db;
+      }
+      
+      .button-secondary:hover {
+        background-color: #e5e7eb;
+      }
+      
+      .result-container {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #f0f9ff;
+        border-radius: 0.5rem;
+        border: 1px solid #bae6fd;
+      }
+      
+      .result-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0284c7;
+        margin-bottom: 0.5rem;
+      }
+      
+      .result-explanation {
+        color: #0369a1;
+        font-size: 0.875rem;
+      }
+      
+      .footer {
+        background-color: #1f2937;
+        color: white;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+      
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      
+      .footer-section {
+        flex: 1;
+        min-width: 250px;
+      }
+      
+      .footer-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-link {
+        color: #d1d5db;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      
+      .footer-link:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Your content here -->
+  </body>
+</html>
   color: #1f2937;
 }
 
@@ -509,11 +739,73 @@ a:hover {
     </style>
   </head>
   <body>
-    <div id="root" class="content-wrapper"></div>
+    <div id="root" class="content-wrapper" data-loading>
+      <!-- Loading fallback content -->
+      <div class="app-loading">
+        <div class="loading-spinner">Loading...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      // Load non-critical CSS
+      function loadCSS(href) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = function() {
+          this.media = 'all';
+        };
+        document.head.appendChild(link);
+      }
+      
+      // Load Google Fonts asynchronously
+      const WebFontConfig = {
+        google: {
+          families: ['Poppins:300,400,500,600,700', 'Montserrat:400,500,600,700,800', 'Fira+Code:400,500']
+        },
+        active: function() {
+          // Fonts loaded
+          document.documentElement.classList.add('fonts-loaded');
+        }
+      };
+      
+      // Load WebFont loader
+      (function(d) {
+        const wf = d.createElement('script');
+        const s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+      
+      // Load main CSS
+      loadCSS('/assets/index.css');
+      
+      // Mark as loaded when the app is ready
+      document.addEventListener('DOMContentLoaded', function() {
+        const root = document.getElementById('root');
+        if (root) {
+          // Remove loading class after a short delay to ensure smooth transition
+          setTimeout(() => {
+            root.setAttribute('data-loaded', 'true');
+            // Remove loading indicator after content is visible
+            const loadingIndicator = document.querySelector('.app-loading');
+            if (loadingIndicator) {
+              setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+              }, 300);
+            }
+          }, 100);
+        }
+      });
       // Script to ensure CSS is loaded properly
       document.addEventListener('DOMContentLoaded', function() {
+        // Mark as loaded when the app is ready
+        const root = document.getElementById('root');
+        if (root) {
+          root.setAttribute('data-loaded', 'true');
+        }
         // Check if CSS is loaded
         const checkCSSLoaded = () => {
           // Get computed styles of body
